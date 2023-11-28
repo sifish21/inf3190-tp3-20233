@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Compagnon{% end block %}</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="top-section">
+        <div class="titre-container">
+            <h1 class="titre">Compagnon</h1>
+            <p class="slogan">Offrez leur une seconde chance</p>
+        </div>
+        <div class="menu">
+            <nav>
+                <div class="option-menu"><a href="/">Accueil</a></div>
+                <div class="option-menu"><a href="/liste">Liste</a></div>
+                <div class="option-menu"><a href="/aproppos">À proppos</a></div>
+            </nav>
+        </div>
+    </div>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <div class="bottom-page">
+            &copy; 2023 Compagnon.com
+        </div>
+    </footer>
+</body>
