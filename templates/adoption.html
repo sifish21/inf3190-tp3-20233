@@ -1,8 +1,8 @@
 {% extends 'menu.html' %}
 {% block content %}
 <div class="content">
-    <div id="message">
-        <p>Mettez votre compgnon en adoption</p>
+    <div id="message-formulaire">
+        <p>Inscrivez votre compagnon ici</p>
     </div>
     <div id="form-container">
         <form id="form" action="/submit" method="post">
@@ -29,13 +29,13 @@
             </div>
             <div class="label">
                 <label for="age">Âge de l'animal</label>
-                <input type="number" id="age" name="age" min="0" placeholder="ex: 3" required>
+                <input type="text" id="age" name="age" placeholder="ex: 3" required>
             </div>
             <div class="error-message" id="error-age">
-                <p>* Entrez l'âge de l'animal (un nombre)</p>
+                <p>* Entrez l'âge de l'animal (nombre entre 0 et 30)</p>
             </div>
             <div class="label">
-                <label for="courriel">Votre courriel</label>
+                <label for="email">Votre courriel</label>
                 <input type="email" id="email" name="email" placeholder="example@example.com" required>
             </div>
             <div class="error-message" id="error-email">
@@ -65,7 +65,7 @@
             </div>
             <div class="label">
                 <label for="description">Courte description</label>
-                <textarea id="description" name="descripition" rows="7" cols="35" placeholder="ex: Chien enjoué..." required></textarea>
+                <textarea id="description" name="description" rows="7" cols="35" placeholder="ex: Chien enjoué..." required></textarea>
             </div>
             <div class="error-message" id="error-description">
                 <p>* Entrez une description (max 150 caractères)</p>

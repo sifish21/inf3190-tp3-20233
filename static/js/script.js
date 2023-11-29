@@ -9,12 +9,12 @@ var ville_field = document.getElementById('ville');
 var code_postal_field = document.getElementById('code-postal');
 var description_field = document.getElementById('description');
 
-var body_element = document.body;
+var form = document.getElementById('form');
 var submit_button = document.getElementById('submit-button');
 
 //ÉVÈNEMMENTS DU FORMULAIRE
 
-body_element.addEventListener('change', function() {
+form.addEventListener('change', function() {
     if(checkAllFields()){
         submit_button.style.backgroundColor = 'rgb(220, 20, 60)';
         submit_button.disabled = false;
@@ -114,33 +114,45 @@ function checkNomField() {
 }
 
 function checkEspeceRaceVilleField(value_to_check) {
-    var regex = new RegExp("^[a-zA-Z]{2,}$");
-    return regex.test(value_to_check);
+    var regex = new RegExp("^[a-zA-Z-]{2,}$");
+    return regex.test(value_to_check) && value_to_check.includes(',') == false;
 }
 
 function checkAgeField() {
-    return age_field.value >= 0 && age_field.value <= 30;
+    if(isNaN(age_field.value)){
+        return false;
+    } else {
+        return age_field.value >= 0 && age_field.value <= 30 &&
+        age_field.value.includes(',') == false;
+    }
 }
 
 function checkCourrielField() {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email_field.value);
+    return emailRegex.test(email_field.value) &&
+     email_field.value.includes(',') == false;
 }
 
 function checkNumCiviqueField() {
-    return num_civique_field.value > 0 && num_civique_field.value < 100000;
+    if(isNaN(num_civique_field.value)){
+        return false;
+    }else {
+        return num_civique_field.value > 0 && num_civique_field.value < 100000 &&
+        num_civique_field.value.includes(',') == false;
+    }
 }
 
 function checkCodePostalField() {
     const postalCodeWithSpaceRegex = /^[A-Za-z]\d[A-Za-z] \d[A-Za-z]\d$/;
     const postalCodeRegex = /^[A-Za-z]\d[A-Za-z]\d[A-Za-z]\d$/;
     return postalCodeRegex.test(code_postal_field.value) ||
-     postalCodeWithSpaceRegex.test(code_postal_field.value);
+     postalCodeWithSpaceRegex.test(code_postal_field.value) &&
+      code_postal_field.value.includes(',') == false;
 }
 
 function checkDescriptionField() {
     return description_field.value.length > 1 &&
-    description_field.value.length < 150;
+    description_field.value.length < 150 && description_field.value.includes(',') == false;
 }
 
 function checkAllFields() {

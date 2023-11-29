@@ -15,7 +15,7 @@
 from flask import Flask
 from flask import render_template
 from flask import g
-from flask import redirect,url_for
+from flask import redirect,url_for,request
 from .database import Database
 
 app = Flask(__name__, static_url_path="", static_folder="static")
@@ -27,6 +27,8 @@ def get_db():
         g._database = Database()
     return g._database
 
+def data_is_valid():
+    return True
 
 @app.teardown_appcontext
 def close_connection(exception):
@@ -50,4 +52,16 @@ def succes():
 
 @app.route("/submit", methods=["POST"])
 def submit():
+    if data_is_valid():
+        database = get_db()
+        database.add_animal(request.form["nom"],
+                            request.form["espece"],
+                            request.form["race"],
+                            request.form["age"],
+                            request.form["description"],
+                            request.form["email"],
+                            request.form["num-civique"],
+                            request.form["ville"],
+                            request.form["code-postal"])
+        database.disconnect()
     return redirect(url_for("succes"))
