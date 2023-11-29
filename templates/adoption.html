@@ -5,13 +5,13 @@
         <p>Mettez votre compgnon en adoption</p>
     </div>
     <div id="form-container">
-        <form id="form">
+        <form id="form" action="/submit" method="post">
             <div class="label">
                 <label for="nom">Nom de l'animal</label>
                 <input type="text" id="nom" name="nom" placeholder="ex: Caddie" required>
             </div>
             <div class="error-message" id="error-nom">
-                <p>* Entrez le nom de l'animal (min 2 lettres)</p>
+                <p>* Entrez le nom de l'animal (min 2, max 20 lettres)</p>
             </div>
             <div class="label">
                 <label for="espece">Espèce de l'animal</label>
@@ -65,13 +65,13 @@
             </div>
             <div class="label">
                 <label for="description">Courte description</label>
-                <textarea id="nom" name="nom" rows="7" cols="35" placeholder="ex: Chien enjoué..." required></textarea>
+                <textarea id="description" name="descripition" rows="7" cols="35" placeholder="ex: Chien enjoué..." required></textarea>
             </div>
             <div class="error-message" id="error-description">
                 <p>* Entrez une description (max 150 caractères)</p>
             </div>
             <div id="button-container">
-                <input id="submit-button" type="submit" value="Soumettre">
+                <input id="submit-button" type="submit" value="Soumettre" disabled>
             </div>                                 
         </form>
     </div>

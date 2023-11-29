@@ -15,6 +15,7 @@
 from flask import Flask
 from flask import render_template
 from flask import g
+from flask import redirect,url_for
 from .database import Database
 
 app = Flask(__name__, static_url_path="", static_folder="static")
@@ -42,3 +43,11 @@ def form():
 @app.route('/adoption')
 def adoption():
     return render_template('adoption.html')
+
+@app.route('/succes')
+def succes():
+    return render_template('succes.html')
+
+@app.route("/submit", methods=["POST"])
+def submit():
+    return redirect(url_for("succes"))

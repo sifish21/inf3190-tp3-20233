@@ -9,15 +9,29 @@ var ville_field = document.getElementById('ville');
 var code_postal_field = document.getElementById('code-postal');
 var description_field = document.getElementById('description');
 
+var body_element = document.body;
+var submit_button = document.getElementById('submit-button');
+
 //ÉVÈNEMMENTS DU FORMULAIRE
 
-document.getElementById('submit-button').addEventListener('mousedown', function() {
-    console.log('event');
-    document.getElementById('submit-button').style.backgroundColor = 'rgb(106, 11, 30)';
+body_element.addEventListener('change', function() {
+    if(checkAllFields()){
+        submit_button.style.backgroundColor = 'rgb(220, 20, 60)';
+        submit_button.disabled = false;
+    } else {
+        submit_button.style.backgroundColor = 'lightgrey';
+    }
+})
+
+submit_button.addEventListener('mousedown', function() {
+    if(checkAllFields()){
+        submit_button.style.backgroundColor = 'rgb(106, 11, 30)';
+    }
 });
-document.getElementById('submit-button').addEventListener('mouseup', function() {
-    console.log('event');
-    document.getElementById('submit-button').style.backgroundColor = 'rgb(220,20,60)';
+submit_button.addEventListener('mouseup', function() {
+    if(checkAllFields()){
+        submit_button.style.backgroundColor = 'rgb(220, 20, 60)';
+    }
 });
 
 nom_field.addEventListener('change', function(){
@@ -29,7 +43,7 @@ nom_field.addEventListener('change', function(){
 });
 
 espece_field.addEventListener('change', function(){
-    if(checkEspeceField()){
+    if(checkEspeceRaceVilleField(espece_field.value)){
         document.getElementById('error-espece').style.display = 'none';
     } else {
         document.getElementById('error-espece').style.display = 'flex';
@@ -37,7 +51,7 @@ espece_field.addEventListener('change', function(){
 });
 
 race_field.addEventListener('change', function(){
-    if(checkEspeceField()){
+    if(checkEspeceRaceVilleField(race_field.value)){
         document.getElementById('error-race').style.display = 'none';
     } else {
         document.getElementById('error-race').style.display = 'flex';
@@ -69,7 +83,7 @@ num_civique_field.addEventListener('change', function() {
 });
 
 ville_field.addEventListener('change', function() {
-    if(checkNomVilleField()){
+    if(checkEspeceRaceVilleField(ville_field.value)){
         document.getElementById('error-ville').style.display = 'none';
     } else {
         document.getElementById('error-ville').style.display = 'flex';
@@ -94,18 +108,18 @@ description_field.addEventListener('change', function() {
 
 // CHECKFIELDS
 
-function checkNomVilleField() {
-    var regex = new RegExp("^[a-zA-Z]{2,}$");
+function checkNomField() {
+    var regex = new RegExp("^[a-zA-Z]{3,20}$");
     return regex.test(nom_field.value);
 }
 
-function checkEspeceRaceField() {
-    var regex = new RegExp("^[a-zA-Z]{3,}$");
-    return regex.test(espece_field.value);
+function checkEspeceRaceVilleField(value_to_check) {
+    var regex = new RegExp("^[a-zA-Z]{2,}$");
+    return regex.test(value_to_check);
 }
 
 function checkAgeField() {
-    return age_field.value > 0 && age_field.value < 40;
+    return age_field.value >= 0 && age_field.value <= 30;
 }
 
 function checkCourrielField() {
@@ -125,8 +139,14 @@ function checkCodePostalField() {
 }
 
 function checkDescriptionField() {
-    return description_field.textContent.length > 1 &&
-    description_field.textContent.length < 150;
+    return description_field.value.length > 1 &&
+    description_field.value.length < 150;
+}
+
+function checkAllFields() {
+    return checkNomField() && checkAgeField() && checkCodePostalField() && checkCourrielField() &&
+    checkEspeceRaceVilleField(espece_field.value) && checkEspeceRaceVilleField(race_field.value) &&
+    checkEspeceRaceVilleField(ville_field.value) && checkDescriptionField() && checkNumCiviqueField();
 }
 
 

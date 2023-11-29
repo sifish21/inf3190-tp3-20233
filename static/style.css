@@ -96,7 +96,7 @@ footer {
 }
 
 #submit-button {
-    background-color: crimson;
+    background-color: lightgrey;
     color: white;
     font-weight: bold;
     border-radius: 10px;
@@ -121,4 +121,19 @@ footer {
 .error-message p {
     margin: 0;
     padding: 0;
+}
+
+#content-succes {
+    text-align: center;
+}
+
+#message-succes {
+    color: crimson;
+    font-size: 25px;
+    font-weight: 300;
+    font-family: Marker felt, fantasy;
+}
+
+#gif-succes {
+    padding: 15px;
 }
