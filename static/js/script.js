@@ -104,7 +104,11 @@ description_field.addEventListener('change', function() {
     } else {
         document.getElementById('error-description').style.display = 'flex';
     }
-})
+});
+
+// ÉVÈNEMENTS DE LA LISTE
+
+
 
 // CHECKFIELDS
 

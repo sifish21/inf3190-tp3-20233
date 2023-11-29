@@ -39,7 +39,11 @@ def close_connection(exception):
 
 @app.route('/')
 def form():
-    # À remplacer par le contenu de votre choix.
+    db = get_db()
+    animaux = db.get_animaux()
+    for animal in animaux:
+        print(f"{animal}\n")
+        print(f"{animal['id']}\n")
     return render_template('index.html')
 
 @app.route('/adoption')
@@ -65,3 +69,10 @@ def submit():
                             request.form["code-postal"])
         database.disconnect()
     return redirect(url_for("succes"))
+
+@app.route('/liste')
+def liste():
+    db = get_db()
+    animaux = db.get_animaux()
+    db.disconnect()
+    return render_template('liste.html', animaux=animaux)
