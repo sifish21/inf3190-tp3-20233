@@ -94,3 +94,31 @@ footer {
     width: 100%;
     border-radius: 5px;
 }
+
+#submit-button {
+    background-color: crimson;
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 15px;
+    font-size: 16px;
+    border: 1px solid black;
+}
+
+#button-container {
+    width: 100%;
+    text-align: center;
+}
+
+.error-message {
+    font-size: 8px;
+    color: red;
+    padding: 0;
+    margin: 0;
+    display: none;
+}
+
+.error-message p {
+    margin: 0;
+    padding: 0;
+}
