@@ -18,7 +18,7 @@
                 <input type="text" id="espece" name="espece" placeholder="ex: Chien" required>
             </div>
             <div class="error-message" id="error-espece">
-                <p>* Entrez l'espèce de l'animal</p>
+                <p>* Entrez l'espèce de l'animal (min 3 lettres)</p>
             </div>
             <div class="label">
                 <label for="race">Race de l'animal</label>
@@ -32,7 +32,7 @@
                 <input type="number" id="age" name="age" min="0" placeholder="ex: 3" required>
             </div>
             <div class="error-message" id="error-age">
-                <p>* Entrez l'âge de l'animal</p>
+                <p>* Entrez l'âge de l'animal (un nombre)</p>
             </div>
             <div class="label">
                 <label for="courriel">Votre courriel</label>
@@ -65,10 +65,10 @@
             </div>
             <div class="label">
                 <label for="description">Courte description</label>
-                <textarea id="nom" name="nom" rows="7" cols="35" placeholder="ex: Caddie" required></textarea>
+                <textarea id="nom" name="nom" rows="7" cols="35" placeholder="ex: Chien enjoué..." required></textarea>
             </div>
             <div class="error-message" id="error-description">
-                <p>* Entrez une description</p>
+                <p>* Entrez une description (max 150 caractères)</p>
             </div>
             <div id="button-container">
                 <input id="submit-button" type="submit" value="Soumettre">
