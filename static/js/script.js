@@ -21,7 +21,7 @@ form.addEventListener('change', function() {
     } else {
         submit_button.style.backgroundColor = 'lightgrey';
     }
-})
+});
 
 submit_button.addEventListener('mousedown', function() {
     if(checkAllFields()){
@@ -105,10 +105,6 @@ description_field.addEventListener('change', function() {
         document.getElementById('error-description').style.display = 'flex';
     }
 });
-
-// ÉVÈNEMENTS DE LA LISTE
-
-
 
 // CHECKFIELDS
 

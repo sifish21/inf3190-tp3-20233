@@ -39,17 +39,24 @@ def close_connection(exception):
 
 @app.route('/')
 def form():
-    db = get_db()
-    animaux = db.get_animaux()
-    for animal in animaux:
-        print(f"{animal}\n")
-        print(f"{animal['id']}\n")
+
     return render_template('index.html')
 
 @app.route('/adoption')
 def adoption():
     return render_template('adoption.html')
 
+@app.route('/animal/<int:animal_id>')
+def animal(animal_id):
+    db = get_db()
+    animal = db.get_animal(animal_id)
+    db.disconnect()
+    if(animal != None):
+        return render_template('animal.html', animal=animal)
+    else:
+        return render_template('error404.html')
+    
+    
 @app.route('/succes')
 def succes():
     return render_template('succes.html')
