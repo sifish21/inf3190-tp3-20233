@@ -17,6 +17,7 @@ from flask import render_template
 from flask import g
 from flask import redirect,url_for,request
 from .database import Database
+import random
 
 app = Flask(__name__, static_url_path="", static_folder="static")
 
@@ -30,6 +31,18 @@ def get_db():
 def data_is_valid():
     return True
 
+def get_5_random_indexes():
+    db = get_db()
+    animaux = db.get_animaux()
+    db.disconnect()
+    nb_animaux = len(animaux)
+    array = []
+    while len(array) < 5:
+        animal_id = random.randint(1, nb_animaux)
+        if animal_id not in array:
+            array.append(animal_id)
+    return array
+
 @app.teardown_appcontext
 def close_connection(exception):
     db = getattr(g, '_database', None)
@@ -38,9 +51,14 @@ def close_connection(exception):
 
 
 @app.route('/')
-def form():
+def index():
+    animaux_en_vedette = get_5_random_indexes()
+    db = get_db()
+    animals = []
+    for index in animaux_en_vedette:
+        animals.append(db.get_animal(index))
 
-    return render_template('index.html')
+    return render_template('index.html', animals=animals)
 
 @app.route('/adoption')
 def adoption():

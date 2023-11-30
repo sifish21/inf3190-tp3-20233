@@ -134,12 +134,9 @@ function checkCourrielField() {
 }
 
 function checkNumCiviqueField() {
-    if(isNaN(num_civique_field.value)){
-        return false;
-    }else {
-        return num_civique_field.value > 0 && num_civique_field.value < 100000 &&
-        num_civique_field.value.includes(',') == false;
-    }
+    return num_civique_field.value != '' &&
+    num_civique_field.value.includes(',') == false;
+
 }
 
 function checkCodePostalField() {
