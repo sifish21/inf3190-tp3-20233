@@ -207,3 +207,21 @@ footer {
 .separation-verticale {
     height: 200px;
 }
+
+#contenu-index {
+    display: block;
+}
+
+#barre-recherche {
+    margin-left: 70%;
+    
+}
+
+#barre-recherche input {
+    background-color: rgba(220,20,60,0.2);
+    border-radius: 15px;
+    height: 30px;
+    margin: 10px;
+    width: 90%;
+    border: 2px solid crimson;
+}

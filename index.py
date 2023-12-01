@@ -34,14 +34,20 @@ def data_is_valid():
 def get_5_random_indexes():
     db = get_db()
     animaux = db.get_animaux()
-    db.disconnect()
     nb_animaux = len(animaux)
+    print(f"{nb_animaux} nb animaux\n")
     array = []
     while len(array) < 5:
-        animal_id = random.randint(1, nb_animaux)
-        if animal_id not in array:
-            array.append(animal_id)
+        id = random.randint(1, nb_animaux)
+        if id not in array:
+            array.append(id)
+            print(len(array))
+            print("\n")
+    for number in array:
+        print(number)
+        print("\n")  
     return array
+
 
 @app.teardown_appcontext
 def close_connection(exception):
@@ -54,9 +60,8 @@ def close_connection(exception):
 def index():
     animaux_en_vedette = get_5_random_indexes()
     db = get_db()
-    animals = []
-    for index in animaux_en_vedette:
-        animals.append(db.get_animal(index))
+    animals = [db.get_animal(number) for number in animaux_en_vedette]
+    db.disconnect()
 
     return render_template('index.html', animals=animals)
 
@@ -65,7 +70,7 @@ def adoption():
     return render_template('adoption.html')
 
 @app.route('/animal/<int:animal_id>')
-def animal(animal_id):
+def page_animal(animal_id):
     db = get_db()
     animal = db.get_animal(animal_id)
     db.disconnect()
