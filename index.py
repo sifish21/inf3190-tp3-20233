@@ -35,17 +35,11 @@ def get_5_random_indexes():
     db = get_db()
     animaux = db.get_animaux()
     nb_animaux = len(animaux)
-    print(f"{nb_animaux} nb animaux\n")
     array = []
     while len(array) < 5:
         id = random.randint(1, nb_animaux)
         if id not in array:
-            array.append(id)
-            print(len(array))
-            print("\n")
-    for number in array:
-        print(number)
-        print("\n")  
+            array.append(id) 
     return array
 
 
@@ -65,9 +59,11 @@ def index():
 
     return render_template('index.html', animals=animals)
 
+
 @app.route('/adoption')
 def adoption():
     return render_template('adoption.html')
+
 
 @app.route('/animal/<int:animal_id>')
 def page_animal(animal_id):
@@ -83,6 +79,18 @@ def page_animal(animal_id):
 @app.route('/succes')
 def succes():
     return render_template('succes.html')
+
+
+@app.route("/recherche", methods=["POST"])
+def recherche():
+    string = request.form["search-bar"]
+    db = get_db()
+    matches = db.get_match(string)
+    ids = [match[0] for match in matches]
+    animaux = [db.get_animal(id) for id in ids]
+
+    return render_template("recherche.html", animaux=animaux)
+
 
 @app.route("/submit", methods=["POST"])
 def submit():
@@ -100,9 +108,15 @@ def submit():
         database.disconnect()
     return redirect(url_for("succes"))
 
+
 @app.route('/liste')
 def liste():
     db = get_db()
     animaux = db.get_animaux()
     db.disconnect()
     return render_template('liste.html', animaux=animaux)
+
+
+
+
+

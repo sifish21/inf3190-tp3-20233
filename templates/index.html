@@ -1,10 +1,11 @@
 {% extends 'menu.html' %}
 {% block content %}
     <div id="contenu-index">
-        <div id="barre-recherche">
-            <input type="text" placeholder="  Recherchez...">
-            <div id="resultats"></div>
-        </div>
+        <div id="search-bar-container">
+            <form id="search-form" action="/recherche" method="post">
+                <input id="search-bar" type="text" name="search-bar" placeholder="Recherchez...">
+                <input id="submit-search-bar" type="submit" value="Recherchez" disabled>
+            </form>
         <div id="iamge-index">
             <div id="quote-index">
 
@@ -17,4 +18,5 @@
 
         </div>
     </div>
+    <script src="js/index.js"></script>
 {% endblock %}

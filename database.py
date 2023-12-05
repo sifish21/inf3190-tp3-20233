@@ -77,22 +77,11 @@ class Database:
         connection.commit()
         return lastId
     
-    def get_match_espece(self, prefix):
+    def get_match(self, prefix):
         prefix = prefix + '%'
         cursor = self.get_connection().cursor()
-        query = ("SELECT espece FROM animaux WHERE espece LIKE ?")
-        cursor.execute(query, (prefix ,))
-        all_items = cursor.fetchall()
-        if all_items is None:
-            return all_items
-        else:
-            return [matching for matching in all_items]
-
-    def get_race_match(self, prefix):
-        prefix = prefix + '%'
-        cursor = self.get_connection().cursor()
-        query = ("SELECT race FROM animaux WHERE race LIKE ?")
-        cursor.execute(query, (prefix ,))
+        query = ("SELECT id FROM animaux WHERE espece LIKE ? OR race LIKE ?")
+        cursor.execute(query, (prefix ,prefix))
         all_items = cursor.fetchall()
         if all_items is None:
             return all_items

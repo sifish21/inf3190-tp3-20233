@@ -164,6 +164,12 @@ footer {
     justify-content: center;
 }
 
+#recherche-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 .element-list {
     border-radius: 5px;
     border: 3px solid crimson;
@@ -212,16 +218,32 @@ footer {
     display: block;
 }
 
-#barre-recherche {
-    margin-left: 70%;
-    
-}
-
-#barre-recherche input {
+#search-bar {
     background-color: rgba(220,20,60,0.2);
     border-radius: 15px;
     height: 30px;
-    margin: 10px;
-    width: 90%;
+    margin: 15px 5px 15px 65%;
+    width: 20%;
     border: 2px solid crimson;
+    padding-left: 10px;
+}
+
+#search-bar::placeholder {
+    padding: 0;
+}
+
+#search-bar-container {
+    display: inline;
+}
+
+#submit-search-bar {
+    background-color: rgba(220,20,60,0.2);
+    border-radius: 15px;
+    height: 37px;
+    margin: 15px 15px 15px 5px;
+    border: 2px solid crimson;
+}
+
+.invisible {
+    display: none;
 }
