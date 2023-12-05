@@ -170,6 +170,12 @@ footer {
     justify-content: center;
 }
 
+#vedette-liste {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 .element-list {
     border-radius: 5px;
     border: 3px solid crimson;
@@ -246,4 +252,30 @@ footer {
 
 .invisible {
     display: none;
+}
+
+#image-index-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.image-individuel {
+    display: inline-block;
+    margin: 20px;
+}
+.image-individuel img {
+    display: inline-block;
+    object-fit: contain;
+    max-height: 300px;
+    width: auto;
+}
+
+#boutton-vedette {
+    padding: 1px;
+    background-color: rgba(220,20,60,0.3);
+    border-radius: 5px;
+    border: 2px solid crimson;
+    margin: 15px 40% 15px 40%;
+    text-align: center;
 }

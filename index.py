@@ -54,10 +54,10 @@ def close_connection(exception):
 def index():
     animaux_en_vedette = get_5_random_indexes()
     db = get_db()
-    animals = [db.get_animal(number) for number in animaux_en_vedette]
+    animaux = [db.get_animal(number) for number in animaux_en_vedette]
     db.disconnect()
 
-    return render_template('index.html', animals=animals)
+    return render_template('index.html', animaux=animaux)
 
 
 @app.route('/adoption')
