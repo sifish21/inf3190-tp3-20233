@@ -138,7 +138,9 @@ def submit():
                             request.form["ville"],
                             request.form["code-postal"])
         database.disconnect()
-    return redirect(url_for("succes"))
+        return redirect(url_for("succes"))
+    else:
+        return render_template("erreur.html")
 
 
 @app.route('/liste')
