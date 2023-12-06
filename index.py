@@ -18,6 +18,7 @@ from flask import g
 from flask import redirect,url_for,request
 from .database import Database
 import random
+import re
 
 app = Flask(__name__, static_url_path="", static_folder="static")
 
@@ -28,8 +29,31 @@ def get_db():
         g._database = Database()
     return g._database
 
-def data_is_valid():
-    return True
+
+def val_nom(string):
+    return len(string) >= 3 and len(string) <= 20
+
+def val_ville_race_espece(string):
+    return len(string) >= 2
+
+def val_age(age):
+    return int(age) >= 0 and int(age) <= 30
+
+def val_email(email):
+    regex = r'^[^\s@]+@[^\s@]+\.[^\s@]+$'
+    return re.match(regex, email)
+
+def val_adresse(string):
+    return len(string) > 0
+
+def val_cp(string):
+    with_space = r'^[A-Za-z]\d[A-Za-z] \d[A-Za-z]\d$'
+    whithout_space = r'^[A-Za-z]\d[A-Za-z]\d[A-Za-z]\d$'
+    return re.match(with_space, string) or re.match(whithout_space, string)
+
+def val_description(string):
+    return len(string) > 0 and len(string) <= 150
+
 
 def get_5_random_indexes():
     db = get_db()
@@ -94,7 +118,15 @@ def recherche():
 
 @app.route("/submit", methods=["POST"])
 def submit():
-    if data_is_valid():
+    if val_nom(request.form["nom"]) and \
+        val_ville_race_espece(request.form["espece"]) and \
+        val_ville_race_espece(request.form["race"]) and \
+        val_ville_race_espece(request.form["ville"]) and \
+        val_age(request.form["age"]) and \
+        val_email(request.form["email"]) and \
+        val_adresse(request.form["num-civique"]) and \
+        val_cp(request.form["code-postal"]) and \
+        val_description(request.form["description"]):
         database = get_db()
         database.add_animal(request.form["nom"],
                             request.form["espece"],
