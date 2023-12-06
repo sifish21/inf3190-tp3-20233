@@ -24,6 +24,11 @@ boutton_vedette.addEventListener('mousedown', function(){
     document.getElementById('nom-vedette-semaine').style.color = 'white';
 })
 
+boutton_vedette.addEventListener('mouseup', function() {
+    boutton_vedette.style.backgroundColor = 'rgba(220,20,60,0.3)'
+    document.getElementById('nom-vedette-semaine').style.color = 'crimson';
+})
+
 boutton_vedette.addEventListener('click', function() {
     window.location = '/animal/' + 13;
 })
