@@ -177,12 +177,14 @@ footer {
 }
 
 .element-list {
-    border-radius: 5px;
+    border-radius: 10px;
     border: 3px solid crimson;
     padding: 10px;
     margin: 20px;
     width: 150px;
-    background-color: rgba(220,20,60,0.2);
+    background-color: rgba(220,20,60,0.9);
+    font-family: Marker felt, fantasy;
+    color: white;
 }
 
 .element-list p {
@@ -225,11 +227,11 @@ footer {
 }
 
 #search-bar {
-    background-color: rgba(220,20,60,0.2);
-    border-radius: 15px;
-    height: 30px;
-    margin: 15px 5px 15px 65%;
-    width: 20%;
+    background-color: white;
+    border-radius: 2px;
+    height: 40px;
+    margin: 15px 5px 15px 33%;
+    width: 35%;
     border: 2px solid crimson;
     padding-left: 10px;
 }
@@ -243,9 +245,9 @@ footer {
 }
 
 #submit-search-bar {
-    background-color: rgba(220,20,60,0.2);
-    border-radius: 15px;
-    height: 37px;
+    background-color: white;
+    border-radius: 2px;
+    height: 47px;
     margin: 15px 15px 15px 5px;
     border: 2px solid crimson;
 }
